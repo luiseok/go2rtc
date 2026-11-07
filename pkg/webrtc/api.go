@@ -134,7 +134,7 @@ func NewServerAPI(network, address string, filters *Filters) (*webrtc.API, error
 	} else {
 		// try filter all Docker-like interfaces
 		ipFilter = func(ip net.IP) bool {
-			return !xnet.Docker.Contains(ip)
+			return !xnet.IsDocker(ip)
 		}
 		// if there are no such interfaces - disable the filter
 		// the user will need to enable port forwarding
